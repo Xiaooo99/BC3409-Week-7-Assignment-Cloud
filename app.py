@@ -16,9 +16,8 @@ app = Flask(__name__)
 # In[10]:
 
 
-from flask import request, render_template
+from flask import request, render_template 
 import joblib
-model = joblib.load("XGBoost.joblib")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -27,7 +26,7 @@ def index():
         age = request.form.get("age")
         loan = request.form.get("loan")
         print(income, age, loan)
-        model = joblib.load("XGBoost.joblib")
+        model = joblib.load("NeuralNetwork")
         pred = model.predict([[float(income), float(age), float(loan)]])
         print(pred)
         pred= pred[0]
